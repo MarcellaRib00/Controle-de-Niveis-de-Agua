@@ -1,4 +1,3 @@
-
 # Controle de Níveis de Água
 
 Este projeto simula o monitoramento de um reservatório de água utilizando Python e a biblioteca Colorama.
