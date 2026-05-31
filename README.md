@@ -1,32 +1,36 @@
-# Controle de Níveis de Água
+from colorama import init, Fore, Style
 
-Este projeto simula o monitoramento de um reservatório de água utilizando Python e a biblioteca Colorama.
+# Inicializa o Colorama
+init(autoreset=True)
 
-## Funcionalidades
+# Lista com os níveis do reservatório
+niveis = [
+    "Nível 1 - Muito baixo (crítico)",
+    "Nível 2 - Baixo",
+    "Nível 3 - Médio",
+    "Nível 4 - Alto",
+    "Nível 5 - Muito alto (alerta)"
+]
 
-* Utiliza uma lista para armazenar os níveis do reservatório.
-* Utiliza a biblioteca Colorama para exibir mensagens coloridas no terminal.
-* Possui uma função responsável por definir a cor de cada mensagem conforme o nível informado.
-* Exibe os cinco níveis do reservatório com suas respectivas cores.
-* Restaura o estilo padrão do terminal após a exibição das mensagens.
+# Função que define a cor de acordo com o nível
+def definir_cor(nivel):
+    if nivel == 1:
+        return Fore.RED
+    elif nivel == 2:
+        return Fore.YELLOW
+    elif nivel == 3:
+        return Fore.GREEN
+    elif nivel == 4:
+        return Fore.CYAN
+    elif nivel == 5:
+        return Fore.BLUE
+    else:
+        return Fore.WHITE
 
-## Tecnologias Utilizadas
+# Simulação dos níveis do reservatório
+for i in range(len(niveis)):
+    cor = definir_cor(i + 1)
+    print(cor + niveis[i])
 
-* Python
-* Colorama
-
-## Correspondência dos Níveis
-
-| Nível | Situação              | Cor      |
-| ----- | --------------------- | -------- |
-| 1     | Muito baixo (crítico) | Vermelho |
-| 2     | Baixo                 | Amarelo  |
-| 3     | Médio                 | Verde    |
-| 4     | Alto                  | Ciano    |
-| 5     | Muito alto (alerta)   | Azul     |
-
-## Estrutura do Código
-
-A função `definir_cor()` recebe um nível e retorna a cor correspondente.
-
-Os níveis são armazenados em uma lista e exibidos por meio de um laço de repetição, simulando o monitoramento do reservatório.
+# Restaura o estilo padrão do terminal
+print(Style.RESET_ALL)
